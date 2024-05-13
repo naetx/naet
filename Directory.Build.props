@@ -1,0 +1,46 @@
+<Project>
+  <PropertyGroup>
+    <!-- $(RepoRoot) is normally set globally and Arcade overrides it to ensure a trailing slash. -->
+    <RepoRoot Condition=" '$(RepoRoot)' == '' OR !HasTrailingSlash('$(RepoRoot)') ">$(MSBuildThisFileDirectory)</RepoRoot>
+    <!-- Source code settings -->
+    <SharedSourceRoot>$(MSBuildThisFileDirectory)src\Shared\</SharedSourceRoot>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Product>Naet</Product>
+    <StrongNameKeyId>Naet</StrongNameKeyId>
+    <PackageTags>naet;network</PackageTags>
+    <Copyright>© Naet. All rights reserved.</Copyright>
+    <Authors>Naet</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/naetx/naet</RepositoryUrl>
+    <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Version settings">
+    <DefaultNetCoreTargetFramework>net8.0</DefaultNetCoreTargetFramework>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+  </PropertyGroup>
+
+  <!-- Warnings and errors -->
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <!-- Ensure API docs are available. -->
+    <!-- <NoWarn>$(NoWarn.Replace('1591', ''))</NoWarn> -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)/README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+</Project>
