@@ -29,7 +29,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <UseArtifactsOutput>true</UseArtifactsOutput>
+    <ArtifactsPath>$(MSBuildThisFileDirectory)artifacts</ArtifactsPath>
+    <IsPackable Condition="'$(IsPackable)' == '' ">false</IsPackable>
   </PropertyGroup>
 
   <!-- Warnings and errors -->
